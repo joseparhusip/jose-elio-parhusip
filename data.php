@@ -14,15 +14,14 @@ $profile = [
 
 $skills = [
     "💻 Technical Skills" => [
-        ["name" => "PHP Native", "img" => "skills/technical-skills/php.png"],
-        ["name" => "MySQL", "img" => "skills/technical-skills/MySQL.png"],
-        ["name" => "RESTful API", "img" => "skills/technical-skills/RESTful API (GET, POST, PUT, DELETE).png"],
-        ["name" => "Node.js & Express", "img" => "skills/technical-skills/nodejs-frameworks.png"],
-        ["name" => "Flutter & Dart", "img" => "skills/technical-skills/Flutter & Dart.webp"],
-        ["name" => "XAMPP", "img" => "skills/technical-skills/XAMPP.jpg"],
-        ["name" => "Google Colab", "img" => "skills/technical-skills/colab.png"],
-        ["name" => "SAP", "img" => "skills/technical-skills/SAP.png"],
-        ["name" => "Figma", "img" => "skills/technical-skills/Figma.jpg"]
+        // Urutan dan Persentase sesuai permintaan
+        ["name" => "Flutter", "img" => "skills/technical-skills/Flutter & Dart.webp", "percent" => 88],
+        ["name" => "PHP Native", "img" => "skills/technical-skills/php.png", "percent" => 80],
+        ["name" => "Node.js & Express", "img" => "skills/technical-skills/nodejs-frameworks.png", "percent" => 78],
+        ["name" => "React JS", "img" => "skills/technical-skills/react js.png", "percent" => 78],
+        ["name" => "SAP", "img" => "skills/technical-skills/SAP.png", "percent" => 75],
+        ["name" => "Google Colab", "img" => "skills/technical-skills/colab.png", "percent" => 60],
+        ["name" => "Figma", "img" => "skills/technical-skills/Figma.jpg", "percent" => 50],
     ],
     "📊 Business & Data" => [
         ["name" => "Business Analysis", "img" => "skills/business-data/Business Analysis.png"],
@@ -32,7 +31,6 @@ $skills = [
     ]
 ];
 
-// UPDATE: Urutan ditukar (Backend Dulu, baru Mobile) sesuai request
 $experience = [
     [
         "title" => "Back End Developer (Internship)",

@@ -408,3 +408,47 @@ footer {
     font-weight: 600;
     letter-spacing: 1px;
 }
+
+/* --- TAMBAHAN UNTUK SKILL PROGRESS BAR --- */
+.skill-card {
+    min-height: 240px; /* Tinggi kartu diperbesar agar muat */
+    justify-content: flex-start;
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill-card h5 {
+    margin-bottom: 15px; /* Jarak antara judul skill dan bar */
+    flex-grow: 1; /* Agar judul mengisi ruang tengah */
+    display: flex;
+    align-items: center;
+}
+
+.progress-wrapper {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.progress {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    height: 8px !important;
+    overflow: hidden;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.progress-bar {
+    background-color: var(--primary-red) !important;
+    border-radius: 10px;
+}
+
+.skill-percent {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    text-align: right;
+}
