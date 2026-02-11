@@ -1,6 +1,3 @@
-/* style.css - Tema Red (#B4121B) & Black (#000000) */
-
-/* 1. DEFINISI FONT LOKAL */
 @font-face {
     font-family: 'Poppins';
     src: url('fonts/Poppins/Poppins-Regular.ttf') format('truetype');
@@ -12,7 +9,7 @@
     font-weight: 700;
 }
 
-/* 2. VARIABEL WARNA */
+
 :root {
     --primary-red: #B4121B;
     --primary-black: #000000;
@@ -20,7 +17,7 @@
     --text-light: #f8f9fa;
 }
 
-/* 3. GLOBAL STYLE */
+
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
@@ -28,7 +25,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 4. NAVBAR (MERAH) */
+
 .navbar {
     background-color: var(--primary-red) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -36,25 +33,29 @@ body {
     transition: all 0.3s ease;
 }
 
+
 .navbar-brand {
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 1.5rem;
+    font-weight: 700 !important;
+    letter-spacing: 2px;
+    font-size: 1.6rem;
+    text-transform: uppercase !important;
 }
 
+
 .nav-link {
-    font-weight: 500;
+    font-weight: 700 !important;
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.9) !important;
     margin: 0 10px;
     position: relative;
+    text-transform: uppercase !important;
 }
 
 .nav-link::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 3px;
     bottom: 0;
     left: 0;
     background-color: #fff;
@@ -69,7 +70,7 @@ body {
     color: #fff !important;
 }
 
-/* 5. HERO SECTION */
+
 .hero-section {
     background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
@@ -84,7 +85,7 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-/* 6. OVERRIDE BOOTSTRAP */
+
 .text-primary { color: var(--primary-red) !important; }
 .bg-primary { background-color: var(--primary-red) !important; }
 .btn-primary {
@@ -105,7 +106,7 @@ body {
     font-weight: bold;
 }
 
-/* 7. KARTU & SECTIONS */
+
 section { padding: 100px 0; }
 .card {
     border: none;
@@ -113,14 +114,8 @@ section { padding: 100px 0; }
     transition: all 0.3s ease;
     overflow: hidden;
 }
-.card-hover-border { border-top: 4px solid transparent; }
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-}
-.card:hover .card-hover-border { border-top: 4px solid var(--primary-red); }
 
-/* --- STYLE UNTUK EXPERIENCE CARD --- */
+
 .experience-card {
     background-color: #fff;
     border-radius: 15px;
@@ -134,7 +129,7 @@ section { padding: 100px 0; }
     box-shadow: 0 15px 30px rgba(180, 18, 27, 0.15); 
 }
 
-/* Icon box di sebelah kiri judul */
+
 .exp-icon-box {
     width: 50px;
     height: 50px;
@@ -147,7 +142,7 @@ section { padding: 100px 0; }
     font-size: 1.2rem;
 }
 
-/* Badge tanggal warna hitam */
+
 .bg-black {
     background-color: #000 !important;
 }
@@ -157,7 +152,7 @@ footer {
     border-top: 5px solid var(--primary-red);
 }
 
-/* --- MARQUEE ANIMATION (SKILLS) --- */
+
 .marquee-container {
     overflow: hidden;
     white-space: nowrap;
@@ -193,6 +188,9 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 240px;
+    justify-content: flex-start;
+    padding-top: 25px;
 }
 
 .skill-card:hover {
@@ -212,11 +210,98 @@ footer {
     font-size: 1rem;
     font-weight: 700;
     color: #333;
-    margin: 0;
+    margin: 0 0 15px 0;
     white-space: normal;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
-/* --- GALLERY MODAL STYLES --- */
+.progress-wrapper {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.progress {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    height: 8px !important;
+    overflow: hidden;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.progress-bar {
+    background-color: var(--primary-red) !important;
+    border-radius: 10px;
+}
+
+.skill-percent {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    text-align: right;
+}
+
+
+.project-card {
+    background-color: #fff;
+    border: none;
+    transition: all 0.4s ease;
+    border-bottom: 5px solid transparent;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+    border-bottom: 5px solid var(--primary-red);
+}
+
+.project-img-container {
+    height: 220px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card .btn-outline-danger {
+    color: var(--primary-red);
+    border-color: var(--primary-red);
+    transition: all 0.3s ease;
+}
+
+.project-card .btn-outline-danger:hover {
+    background-color: var(--primary-red);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(180, 18, 27, 0.4);
+}
+
+
 .gallery-img-wrapper {
     position: relative;
     width: 100%;
@@ -225,7 +310,7 @@ footer {
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #ddd;
-    cursor: zoom-in; /* Menandakan bisa diklik */
+    cursor: zoom-in; 
 }
 
 .gallery-img {
@@ -294,7 +379,7 @@ footer {
     100% { transform: rotate(360deg); }
 }
 
-/* CONTACT FORM STYLING */
+
 #contact .form-control:focus {
     background-color: #fff !important;
     border: 1px solid var(--primary-red) !important;
@@ -317,11 +402,11 @@ footer {
     box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
 }
 
-/* ========================================= */
-/* NEW: FULL SCREEN IMAGE VIEWER       */
-/* ========================================= */
+
+
+
 .full-image-overlay {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed; 
     z-index: 99999; 
     left: 0;
@@ -336,9 +421,7 @@ footer {
     transition: opacity 0.3s ease;
 }
 
-.full-image-overlay.active {
-    opacity: 1;
-}
+.full-image-overlay.active { opacity: 1; }
 
 .full-image-content {
     margin: auto;
@@ -368,20 +451,14 @@ footer {
     z-index: 100000;
 }
 
-.full-image-close:hover,
-.full-image-close:focus {
+.full-image-close:hover {
     color: var(--primary-red);
-    text-decoration: none;
-    cursor: pointer;
 }
 
-/* ========================================= */
-/* NEW: SENDING LOADING OVERLAY             */
-/* ========================================= */
 .loading-overlay-send {
-    display: none; /* Hidden secara default */
+    display: none;
     position: fixed;
-    z-index: 100000; /* Paling atas */
+    z-index: 100000;
     left: 0;
     top: 0;
     width: 100%;
@@ -396,7 +473,7 @@ footer {
     width: 60px;
     height: 60px;
     border: 5px solid #f3f3f3;
-    border-top: 5px solid #B4121B; /* Merah Jose */
+    border-top: 5px solid #B4121B;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 20px;
@@ -407,48 +484,4 @@ footer {
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 1px;
-}
-
-/* --- TAMBAHAN UNTUK SKILL PROGRESS BAR --- */
-.skill-card {
-    min-height: 240px; /* Tinggi kartu diperbesar agar muat */
-    justify-content: flex-start;
-    padding-top: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.skill-card h5 {
-    margin-bottom: 15px; /* Jarak antara judul skill dan bar */
-    flex-grow: 1; /* Agar judul mengisi ruang tengah */
-    display: flex;
-    align-items: center;
-}
-
-.progress-wrapper {
-    width: 100%;
-    margin-top: auto;
-    padding-top: 10px;
-}
-
-.progress {
-    background-color: #e9ecef;
-    border-radius: 10px;
-    height: 8px !important;
-    overflow: hidden;
-    margin-bottom: 5px;
-    width: 100%;
-}
-
-.progress-bar {
-    background-color: var(--primary-red) !important;
-    border-radius: 10px;
-}
-
-.skill-percent {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--primary-red);
-    text-align: right;
 }
