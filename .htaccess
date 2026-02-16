@@ -1,0 +1,17 @@
+# 1. AMANKAN FILE RAHASIA
+# Mencegah orang lain mendownload file .env, composer, dan file git
+<FilesMatch "^\.env|composer\.json|composer\.lock|\.git">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 2. MATIKAN DIRECTORY LISTING
+# Jika tidak ada file index.php, pengunjung tidak bisa melihat daftar isi folder
+Options -Indexes
+
+# 3. AKTIFKAN REWRITE ENGINE
+RewriteEngine On
+
+# 4. ATUR HALAMAN ERROR 404
+# Jika halaman tidak ditemukan, arahkan ke desain 404.php Anda
+ErrorDocument 404 /404.php

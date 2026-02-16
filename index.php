@@ -10,7 +10,7 @@ include 'data.php';
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.7">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -22,14 +22,16 @@ include 'data.php';
             border-top: 5px solid #B4121B !important;
         }
 
+        /* Scroll Wrapper untuk Technical Skills */
         .horizontal-scroll-wrapper {
             display: flex;
             flex-wrap: nowrap;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            gap: 1.5rem;
-            padding-bottom: 1rem;
+            gap: 2rem; /* Jarak antar card */
+            padding: 1rem 1rem 3rem 1rem; 
             scrollbar-width: thin;
+            align-items: center; /* Center vertical */
         }
         
         .horizontal-scroll-wrapper::-webkit-scrollbar {
@@ -50,61 +52,7 @@ include 'data.php';
             background: #8a0e15; 
         }
 
-        .skill-card-horizontal {
-            flex: 0 0 auto;
-            width: 160px;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card-horizontal:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-card-horizontal img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        .business-card {
-            background: white;
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            text-align: center;
-            height: 100%;
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .business-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .business-icon {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            margin-bottom: 25px;
-        }
-
-        @media (min-width: 768px) {
-            .business-icon {
-                width: 200px;
-                height: 200px;
-            }
-        }
-
-        /* Styles for Language Switcher */
+        /* Style untuk Flag Language */
         .flag-icon {
             transition: transform 0.2s ease, opacity 0.2s;
             cursor: pointer;
@@ -129,6 +77,28 @@ include 'data.php';
 </head>
 <body>
 
+    <div id="globalLoader" class="loader-overlay-fullscreen">
+        <div class="loader">
+            <div class="loader__balls">
+                <div class="loader__balls__group">
+                    <div class="ball item1"></div>
+                    <div class="ball item1"></div>
+                    <div class="ball item1"></div>
+                </div>
+                <div class="loader__balls__group">
+                    <div class="ball item2"></div>
+                    <div class="ball item2"></div>
+                    <div class="ball item2"></div>
+                </div>
+                <div class="loader__balls__group">
+                    <div class="ball item3"></div>
+                    <div class="ball item3"></div>
+                    <div class="ball item3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="loadingOverlay" class="loading-overlay-send" style="display: none;">
         <div class="spinner-custom"></div>
         <div class="loading-text">Mengirim Pesan...</div>
@@ -142,13 +112,71 @@ include 'data.php';
             </button>
             <div class="collapse navbar-collapse text-center" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#about"><?php echo $trans['about'][$lang]; ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills"><?php echo $trans['skills'][$lang]; ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience"><?php echo $trans['experience'][$lang]; ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects"><?php echo $trans['projects'][$lang]; ?></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact"><?php echo $trans['contact'][$lang]; ?></a></li>
+                    <li class="nav-item"><a class="nav-link nav-loader-link" href="#about"><?php echo $trans['about'][$lang]; ?></a></li>
+                    <li class="nav-item"><a class="nav-link nav-loader-link" href="#skills"><?php echo $trans['skills'][$lang]; ?></a></li>
+                    <li class="nav-item"><a class="nav-link nav-loader-link" href="#experience"><?php echo $trans['experience'][$lang]; ?></a></li>
+                    <li class="nav-item"><a class="nav-link nav-loader-link" href="#projects"><?php echo $trans['projects'][$lang]; ?></a></li>
+                    <li class="nav-item"><a class="nav-link nav-loader-link" href="#certificates"><?php echo $trans['certificates'][$lang]; ?></a></li>
+                    <li class="nav-item"><a class="nav-link nav-loader-link" href="#contact"><?php echo $trans['contact'][$lang]; ?></a></li>
                     
                     <li class="nav-item d-flex align-items-center gap-3 ms-lg-4 mt-3 mt-lg-0">
+                        <label class="switch me-2">
+                            <input id="input" type="checkbox" />
+                            <div class="slider round">
+                                <div class="sun-moon">
+                                    <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                    <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50"></circle>
+                                    </svg>
+                                </div>
+                                <div class="stars">
+                                    <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                        <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path>
+                                    </svg>
+                                    <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                        <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path>
+                                    </svg>
+                                    <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                        <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path>
+                                    </svg>
+                                    <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                        <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
                         <a href="?lang=id" class="p-0 <?php echo $lang == 'id' ? 'active-lang' : 'inactive-lang'; ?>" title="Bahasa Indonesia">
                             <img src="icons/indonesia-flag.png" width="32" class="flag-icon" alt="ID">
                         </a>
@@ -161,14 +189,36 @@ include 'data.php';
         </div>
     </nav>
 
-    <header class="hero-section d-flex align-items-center text-center text-white">
-        <div class="container">
+    <header class="hero-section d-flex align-items-center text-center text-white position-relative">
+        
+        <div id="heroCarousel" class="carousel slide carousel-fade position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel" data-bs-interval="4000" style="z-index: 0;">
+            <div class="carousel-inner h-100">
+                <div class="carousel-item active h-100">
+                    <img src="img/header/header-1.jpg" class="d-block w-100 h-100 carousel-img-fit" alt="Header 1">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="img/header/header-2.jpg" class="d-block w-100 h-100 carousel-img-fit" alt="Header 2">
+                </div>
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style="z-index: 3;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style="z-index: 3;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="hero-overlay"></div>
+        <div class="container position-relative" style="z-index: 2;">
             <h1 class="display-3 fw-bold mb-3"><?php echo $profile['name']; ?></h1>
             <h3 class="lead fs-2 mb-4">
-                I'm a <span class="typing-text"></span>
+                <?php echo $lang == 'id' ? 'Saya seorang' : "I'm an"; ?> <span class="typing-text"></span>
             </h3>
             <div class="mt-5">
-                <a href="#contact" class="btn btn-primary btn-lg me-3 mb-3 mb-md-0 px-5 py-3 rounded-pill shadow fw-bold"><?php echo $trans['hire_me'][$lang]; ?></a>
+                <a href="#contact" class="btn btn-primary btn-lg me-3 mb-3 mb-md-0 px-5 py-3 rounded-pill shadow fw-bold nav-loader-link"><?php echo $trans['hire_me'][$lang]; ?></a>
                 <a href="file/cv/CV - Jose Elio Parhusipp.pdf" download="CV - Jose Elio Parhusip.pdf" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow fw-bold">
                     <i class="fas fa-download"></i> <?php echo $trans['download_cv'][$lang]; ?>
                 </a>
@@ -230,12 +280,13 @@ include 'data.php';
                 
                 <div class="horizontal-scroll-wrapper px-2">
                     <?php foreach($skills['technical'] as $tech): ?>
-                    <div class="skill-card-horizontal">
-                        <img src="<?php echo $tech['img']; ?>" alt="<?php echo $tech['name']; ?>">
-                        <h6 class="fw-bold"><?php echo $tech['name']; ?></h6>
-                        
-                        <p class="text-danger fw-bold mt-2 mb-0" style="font-size: 1.1rem;"><?php echo $tech['percent']; ?>%</p>
+                    <div class="neo-card">
+                        <div class="neo-card-overlay"></div>
+                        <div class="neo-card-inner">
+                            <img src="<?php echo $tech['img']; ?>" alt="<?php echo $tech['name']; ?>" class="neo-card-img">
+                            <h6 class="neo-card-title"><?php echo $tech['name']; ?></h6>
                         </div>
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -245,11 +296,14 @@ include 'data.php';
                 <div class="row g-4 justify-content-center">
                     <?php foreach($skills['business'] as $biz): ?>
                     <div class="col-6 col-md-3 d-flex justify-content-center">
-                        <div class="business-card w-100">
-                            <img src="<?php echo $biz['img']; ?>" alt="<?php echo is_array($biz['name']) ? $biz['name'][$lang] : $biz['name']; ?>" class="business-icon">
-                            <h5 style="font-size: 1.1rem; font-weight: bold;">
-                                <?php echo is_array($biz['name']) ? $biz['name'][$lang] : $biz['name']; ?>
-                            </h5>
+                         <div class="neo-card w-100">
+                            <div class="neo-card-overlay"></div>
+                            <div class="neo-card-inner">
+                                <img src="<?php echo $biz['img']; ?>" alt="<?php echo is_array($biz['name']) ? $biz['name'][$lang] : $biz['name']; ?>" class="neo-card-img-lg">
+                                <h6 class="neo-card-title">
+                                    <?php echo is_array($biz['name']) ? $biz['name'][$lang] : $biz['name']; ?>
+                                </h6>
+                            </div>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -324,6 +378,58 @@ include 'data.php';
             </div>
         </div>
     </section>
+    
+    <section id="certificates" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="font-size: 2.5rem;"><?php echo $trans['feat_cert'][$lang]; ?></h2>
+            <div class="row g-4 justify-content-center">
+                <?php foreach($certificates as $index => $cert): ?>
+                <div class="col-md-4 col-sm-6 d-flex justify-content-center">
+                    
+                    <div class="flip-card-wrapper">
+                        <div class="flip-card-inner">
+                            
+                            <div class="flip-card-front">
+                                <div class="flip-card-front-content">
+                                    <i class="fas fa-award fa-3x mb-3 text-white"></i>
+                                    <strong class="text-uppercase text-white" style="letter-spacing: 1.5px;">Hover Me</strong>
+                                </div>
+                            </div>
+
+                            <div class="flip-card-back">
+                                <div class="flip-card-back-bg">
+                                    <div class="blob-red"></div>
+                                    <div class="blob-red" id="blob-right"></div>
+                                    <div class="blob-red" id="blob-bottom"></div>
+                                </div>
+
+                                <div class="flip-card-back-content">
+                                    <small class="flip-badge"><?php echo $cert['category']; ?></small>
+                                    
+                                    <div class="flip-desc-box">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="me-3">
+                                                <img src="<?php echo $cert['image']; ?>" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover; border: 2px solid white;">
+                                            </div>
+                                            <p class="mb-0 fw-bold text-white small" style="flex:1; line-height: 1.2;">
+                                                <?php echo $cert['title']; ?>
+                                            </p>
+                                        </div>
+                                        
+                                        <button class="btn btn-sm btn-outline-light w-100 rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#certModal<?php echo $index; ?>">
+                                            <?php echo $trans['view_detail'][$lang]; ?>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
     <section id="contact" class="py-5 bg-white">
         <div class="container">
@@ -372,7 +478,7 @@ include 'data.php';
 
                 <div class="col-lg-7">
                     <div class="card p-4 shadow-sm border-0 rounded-4">
-                        <form id="contactForm" action="contact_process.php" method="POST" onsubmit="return showLoading();">
+                        <form id="contactForm" action="contact_process.php" method="POST" onsubmit="return handleFormSubmit();">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold"><?php echo $trans['form_name'][$lang]; ?></label>
@@ -390,8 +496,61 @@ include 'data.php';
                                     <label class="form-label fw-bold"><?php echo $trans['form_msg'][$lang]; ?></label>
                                     <textarea name="message" class="form-control bg-light border-0 p-3" rows="5" placeholder="<?php echo $trans['form_msg_ph'][$lang]; ?>" required></textarea>
                                 </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill shadow-sm fw-bold"><?php echo $trans['btn_send'][$lang]; ?></button>
+                                <div class="col-12 mt-4">
+                                    <button class="btn-anim" type="submit" id="submitBtn">
+                                        <div class="btn-anim-outline"></div>
+                                        <div class="state state--default">
+                                            <div class="icon">
+                                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g style="filter: url(#shadow)">
+                                                <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                                                <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                                                </g>
+                                                <defs>
+                                                <filter id="shadow">
+                                                    <fedropshadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></fedropshadow>
+                                                </filter>
+                                                </defs>
+                                            </svg>
+                                            </div>
+                                            <p>
+                                                <?php 
+                                                    // Dynamic Text Splitting for Animation
+                                                    $btnText = isset($trans['btn_send'][$lang]) ? $trans['btn_send'][$lang] : "Send Message";
+                                                    $chars = preg_split('//u', $btnText, -1, PREG_SPLIT_NO_EMPTY);
+                                                    foreach($chars as $i => $char) {
+                                                        // FIX: Gunakan &nbsp; untuk spasi yang lebih aman dengan margin
+                                                        if ($char === ' ') {
+                                                            echo '<span style="--i:'.$i.'; min-width: 5px;">&nbsp;</span>';
+                                                        } else {
+                                                            echo '<span style="--i:'.$i.'">'.$char.'</span>';
+                                                        }
+                                                    }
+                                                ?>
+                                            </p>
+                                        </div>
+                                        <div class="state state--sent">
+                                            <div class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em" stroke-width="0.5px" stroke="black">
+                                                <g style="filter: url(#shadow)">
+                                                <path fill="black" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                                <path fill="#ffffff" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                                </g>
+                                            </svg>
+                                            </div>
+                                            <p>
+                                                <?php 
+                                                    // "Sent" text dynamic
+                                                    $sentText = ($lang == 'id') ? "Terkirim" : "Sent";
+                                                    $charsSent = str_split($sentText);
+                                                    $startIndex = count($chars) + 2; // Offset animation timing
+                                                    foreach($charsSent as $j => $charS) {
+                                                        echo '<span style="--i:'.($startIndex + $j).'">'.$charS.'</span>';
+                                                    }
+                                                ?>
+                                            </p>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -473,6 +632,32 @@ include 'data.php';
     </div>
     <?php endforeach; ?>
 
+    <?php foreach($certificates as $index => $cert): ?>
+    <div class="modal fade" id="certModal<?php echo $index; ?>" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><?php echo $trans['modal_cert'][$lang]; ?>: <?php echo $cert['title']; ?></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center bg-light">
+                    <div class="mb-3">
+                        <img src="<?php echo $cert['image']; ?>" class="img-fluid rounded shadow" style="max-height: 500px;" onclick="openFullImage(this.src)">
+                    </div>
+                    <div class="text-start px-3">
+                        <h5 class="fw-bold"><?php echo $cert['title']; ?></h5>
+                        <span class="badge bg-primary mb-2"><?php echo $cert['category']; ?></span>
+                        <p class="text-secondary"><?php echo $cert['desc'][$lang]; ?></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo $trans['close'][$lang]; ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+
     <div id="fullImageViewer" class="full-image-overlay" onclick="closeFullImage()">
         <span class="full-image-close" onclick="closeFullImage()">&times;</span>
         <img class="full-image-content" id="fullImageDisplay">
@@ -483,11 +668,6 @@ include 'data.php';
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <script>
-        function showLoading() {
-            document.getElementById('loadingOverlay').style.display = 'flex';
-            return true;
-        }
-
         <?php if (isset($_GET['status'])): ?>
             <?php 
                 $status = $_GET['status'];
@@ -515,64 +695,12 @@ include 'data.php';
             }
         <?php endif; ?>
 
-        // TYPING TEXT BERDASARKAN BAHASA
         var typedStrings = [
-            "<?php echo $lang == 'id' ? 'Mahasiswa Bisnis Digital' : 'Digital Business Student'; ?>", 
-            "<?php echo $lang == 'id' ? 'Analis Bisnis Berorientasi Teknologi' : 'Tech-Oriented Business Analyst'; ?>", 
-            "<?php echo $lang == 'id' ? 'Analis Data Bisnis' : 'Business Data Analyst'; ?>", 
-            "<?php echo $lang == 'id' ? 'Mahasiswa Bersertifikat SAP' : 'SAP Certified Student'; ?>", 
-            "Flutter Developer", 
-            "Web Developer"
+            "<?php echo $lang == 'id' ? 'Analis Bisnis' : 'Business Analyst'; ?>", 
+            "<?php echo $lang == 'id' ? 'Flutter Developer' : 'Flutter Developer'; ?>", 
+            "<?php echo $lang == 'id' ? 'Web Developer' : 'Web Developer'; ?>"
         ];
-
-        var typed = new Typed('.typing-text', {
-            strings: typedStrings,
-            typeSpeed: 40,
-            backSpeed: 20,
-            backDelay: 2000,
-            loop: true
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const galleryImages = document.querySelectorAll('.gallery-img');
-            galleryImages.forEach(img => {
-                const wrapper = img.closest('.gallery-img-wrapper');
-                wrapper.classList.add('loading');
-                img.addEventListener('load', function() {
-                    wrapper.classList.remove('loading');
-                });
-                if (img.complete) {
-                    wrapper.classList.remove('loading');
-                }
-            });
-        });
-
-        function openFullImage(src) {
-            var viewer = document.getElementById("fullImageViewer");
-            var imgDisplay = document.getElementById("fullImageDisplay");
-            imgDisplay.src = src;
-            viewer.style.display = "flex";
-            setTimeout(function() { viewer.classList.add("active"); }, 10);
-        }
-
-        function closeFullImage() {
-            var viewer = document.getElementById("fullImageViewer");
-            viewer.classList.remove("active");
-            setTimeout(function() {
-                viewer.style.display = "none";
-                document.getElementById("fullImageDisplay").src = "";
-            }, 300);
-        }
-        
-        document.addEventListener("DOMContentLoaded", function() {
-            const validSections = ["#about", "#skills", "#experience", "#projects", "#contact", ""];
-            const currentHash = window.location.hash;
-            if (currentHash && !validSections.includes(currentHash)) {
-                if (!document.querySelector(currentHash)) {
-                    console.warn("Section tidak ditemukan: " + currentHash);
-                }
-            }
-        });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

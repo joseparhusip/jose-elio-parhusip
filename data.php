@@ -15,6 +15,7 @@ $trans = [
     'skills' => ['id' => 'Keahlian', 'en' => 'Skills'],
     'experience' => ['id' => 'Pengalaman', 'en' => 'Experience'],
     'projects' => ['id' => 'Proyek', 'en' => 'Projects'],
+    'certificates' => ['id' => 'Sertifikat', 'en' => 'Certificates'], // NEW
     'contact' => ['id' => 'Kontak', 'en' => 'Contact'],
     'hire_me' => ['id' => 'Rekrut Saya', 'en' => 'Hire Me'],
     'download_cv' => ['id' => 'Unduh CV', 'en' => 'Download CV'],
@@ -22,11 +23,12 @@ $trans = [
     'location' => ['id' => 'Lokasi', 'en' => 'Location'],
     'education' => ['id' => 'Pendidikan', 'en' => 'Education'],
     'tech_skills_title' => ['id' => 'Keahlian Teknis & Bisnis', 'en' => 'Technical & Business Skills'],
-    'tech_sub' => ['id' => '💻 Keahlian Teknis', 'en' => '💻 Technical Skills'],
-    'biz_sub' => ['id' => '📊 Bisnis & Data', 'en' => '📊 Business & Data'],
+    'tech_sub' => ['id' => '⚡ Keahlian Teknis', 'en' => '⚡ Technical Skills'],
+    'biz_sub' => ['id' => '💼 Bisnis & Data', 'en' => '💼 Business & Data'],
     'exp_title' => ['id' => 'Pengalaman Kerja', 'en' => 'Work Experience'],
     'view_doc' => ['id' => 'Lihat Dokumentasi', 'en' => 'View Documentation'],
     'feat_proj' => ['id' => 'Proyek Unggulan', 'en' => 'Featured Projects'],
+    'feat_cert' => ['id' => 'Sertifikasi & Penghargaan', 'en' => 'Certifications & Awards'], // NEW
     'view_detail' => ['id' => 'Lihat Detail', 'en' => 'View Detail'],
     'get_in_touch' => ['id' => 'Hubungi', 'en' => 'Get In'],
     'touch_highlight' => ['id' => 'Saya', 'en' => 'Touch'],
@@ -46,6 +48,7 @@ $trans = [
     'footer_rights' => ['id' => 'Hak Cipta Dilindungi.', 'en' => 'All Rights Reserved.'],
     'modal_doc' => ['id' => 'Dokumentasi', 'en' => 'Documentation'],
     'modal_proj' => ['id' => 'Detail Proyek', 'en' => 'Project Detail'],
+    'modal_cert' => ['id' => 'Detail Sertifikat', 'en' => 'Certificate Detail'], // NEW
     'modal_zoom' => ['id' => 'Klik pada gambar untuk memperbesar', 'en' => 'Click on image to zoom'],
     'close' => ['id' => 'Tutup', 'en' => 'Close']
 ];
@@ -58,7 +61,7 @@ $profile = [
     ],
     "summary" => [
         "id" => "Saya adalah mahasiswa S1 Bisnis Digital semester 7 di Universitas Logistik dan Bisnis Internasional dengan IPK 3,72, berfokus pada Analisis Bisnis, Data Bisnis, dan sistem berbasis ERP.<br><br>Saya memiliki pengalaman menganalisis kebutuhan bisnis, memodelkan sistem menggunakan ERD, UML, dan flowchart, serta menerjemahkan kebutuhan bisnis menjadi solusi teknis. Saya akrab dengan konsep SAP ERP dan pengolahan data menggunakan SQL dan Google Colab.<br><br>Selain latar belakang bisnis dan data, saya memiliki pengalaman langsung dalam pengembangan aplikasi Web dan mobile menggunakan PHP, MySQL, RESTful API, dan Flutter. Fondasi teknis ini memungkinkan saya untuk secara efektif menjembatani komunikasi antara pemangku kepentingan bisnis dan tim teknis. Saya adalah individu yang terstruktur, analitis, dan bekerja dengan baik secara mandiri maupun kolaboratif dalam proyek tim.",
-        "en" => "I am a 7th-semester Digital Business undergraduate student at Universitas Logistik dan Bisnis Internasional with a GPA of 3.72, focusing on Business Analysis, Business Data, and ERP-based systems.<br><br>I have experience analyzing business requirements, modeling systems using ERD, UML, and flowcharts, and translating business needs into technical solutions. I am familiar with SAP ERP concepts and data processing using SQL and Google Colab.<br><br>In addition to my business and data background, I have hands-on experience in Web and mobile application development using PHP, MySQL, RESTful APIs, and Flutter. This technical foundation allows me to effectively bridge communication between business stakeholders and technical teams. I am a structured, analytical individual who works well both independently and collaboratively in team-based projects."
+        "en" => "I'm an 7th-semester Digital Business undergraduate student at Universitas Logistik dan Bisnis Internasional with a GPA of 3.72, focusing on Business Analysis, Business Data, and ERP-based systems.<br><br>I have experience analyzing business requirements, modeling systems using ERD, UML, and flowcharts, and translating business needs into technical solutions. I am familiar with SAP ERP concepts and data processing using SQL and Google Colab.<br><br>In addition to my business and data background, I have hands-on experience in Web and mobile application development using PHP, MySQL, RESTful APIs, and Flutter. This technical foundation allows me to effectively bridge communication between business stakeholders and technical teams. I'm an structured, analytical individual who works well both independently and collaboratively in team-based projects."
     ],
     "email" => "joseparhusip7@gmail.com",
     "phone" => "+6281292690095",
@@ -68,10 +71,10 @@ $profile = [
 
 $skills = [
     "technical" => [
-        ["name" => "PHP Native", "img" => "skills/technical-skills/php.png", "percent" => 90],
+        ["name" => "PHP Native", "img" => "skills/technical-skills/img-php.png", "percent" => 90],
         ["name" => "Node.js & Express", "img" => "skills/technical-skills/nodejs-frameworks.png", "percent" => 75],
-        ["name" => "Flutter & Dart", "img" => "skills/technical-skills/Flutter & Dart.webp", "percent" => 80],
-        ["name" => "React.js", "img" => "skills/technical-skills/react js.png", "percent" => 80],
+        ["name" => "Flutter & Dart", "img" => "skills/technical-skills/img-flutter.png", "percent" => 80],
+        ["name" => "React.js", "img" => "skills/technical-skills/img-react.png", "percent" => 80],
         ["name" => "Google Colab", "img" => "skills/technical-skills/colab.png", "percent" => 80],
         ["name" => "SAP", "img" => "skills/technical-skills/SAP.png", "percent" => 70],
         ["name" => "Figma", "img" => "skills/technical-skills/Figma.jpg", "percent" => 85]
@@ -126,7 +129,7 @@ $experience = [
     ]
 ];
 
-// DATA PROJECTS DIPERBARUI (Multi-bahasa)
+// DATA PROJECTS (Multi-bahasa)
 $projects = [
     [
         "name" => "JEC Mobile App",
@@ -174,6 +177,64 @@ $projects = [
             "featured-projects/lapak-ulbi/page-lapak-ulbi-2.jpg",
             "featured-projects/lapak-ulbi/laporan-per-tenant.jpg",
             "featured-projects/lapak-ulbi/pelatihan.jpg"
+        ]
+    ]
+];
+
+// DATA CERTIFICATES (BARU DITAMBAHKAN)
+$certificates = [
+    [
+        "title" => "SAP Certification",
+        "category" => "Professional",
+        "image" => "sertifikat/Sertifikat SAP.jpeg",
+        "desc" => [
+            "id" => "Sertifikasi Profesional dalam modul SAP Fundamental yang menunjukkan pemahaman tentang proses bisnis terintegrasi dan Enterprise Resource Planning.",
+            "en" => "Professional Certification in SAP Fundamental module demonstrating understanding of integrated business processes and Enterprise Resource Planning."
+        ]
+    ],
+    [
+        "title" => "P2MW 2023",
+        "category" => "Entrepreneurship",
+        "image" => "sertifikat/Sertifikat P2MW 2023.jpeg",
+        "desc" => [
+            "id" => "Sertifikat penghargaan atas partisipasi dan pencapaian dalam Program Pembinaan Mahasiswa Wirausaha (P2MW) 2023 yang diselenggarakan oleh Kemendikbud.",
+            "en" => "Certificate of appreciation for participation and achievement in the 2023 Student Entrepreneurship Development Program (P2MW) organized by the Ministry of Education and Culture."
+        ]
+    ],
+    [
+        "title" => "HIMABIG Organization",
+        "category" => "Leadership",
+        "image" => "sertifikat/Sertifikat HIMABIG.jpeg",
+        "desc" => [
+            "id" => "Sertifikat kepengurusan dan dedikasi aktif dalam Himpunan Mahasiswa Bisnis Digital (HIMABIG).",
+            "en" => "Certificate of management and active dedication in the Digital Business Student Association (HIMABIG)."
+        ]
+    ],
+    [
+        "title" => "ISEC Participation",
+        "category" => "Event",
+        "image" => "sertifikat/Sertifikat ISEC.jpeg",
+        "desc" => [
+            "id" => "Sertifikat partisipasi dalam acara International Student Engagement & Competition.",
+            "en" => "Certificate of participation in the International Student Engagement & Competition event."
+        ]
+    ],
+    [
+        "title" => "Professional Course",
+        "category" => "Course",
+        "image" => "sertifikat/Sertifikat Course.jpeg",
+        "desc" => [
+            "id" => "Penyelesaian kursus pengembangan keterampilan teknis dan soft skill.",
+            "en" => "Completion of technical and soft skill development courses."
+        ]
+    ],
+    [
+        "title" => "University Achievement",
+        "category" => "Academic",
+        "image" => "sertifikat/Sertifikat kampus.jpg",
+        "desc" => [
+            "id" => "Penghargaan atas prestasi akademik dan kontribusi di lingkungan universitas.",
+            "en" => "Award for academic achievement and contribution within the university environment."
         ]
     ]
 ];
